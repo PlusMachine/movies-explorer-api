@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const signUpRouter = require('./signup');
 const signInRouter = require('./signin');
 const usersRouter = require('./users');
@@ -11,6 +12,6 @@ router.use('/signin', signInRouter);
 router.use(auth);
 
 router.use('/users', usersRouter);
-router.use('/cards', moviesRouter);
+router.use('/movies', moviesRouter);
 
 module.exports = router;
