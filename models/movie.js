@@ -52,6 +52,11 @@ const movieSchema = new mongoose.Schema({
       message: 'Wrong URL',
     },
   },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true,
+  },
   movieId: {
     type: Number,
     required: true,
