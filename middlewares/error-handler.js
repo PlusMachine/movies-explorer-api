@@ -4,7 +4,7 @@ const errorHandler = (err, req, res, next) => {
   const { statusCode = HTTP_STATUS_INTERNAL_SERVER_ERROR, message } = err;
   res
     .status(statusCode)
-    .json({
+    .send({
       message: statusCode === HTTP_STATUS_INTERNAL_SERVER_ERROR
         ? 'Server Error'
         : message,
