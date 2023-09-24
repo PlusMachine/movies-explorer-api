@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const NotFoundError = require('../errors/NotFoundError');
 const signUpRouter = require('./signup');
 const signInRouter = require('./signin');
 const usersRouter = require('./users');
@@ -13,5 +13,8 @@ router.use(auth);
 
 router.use('/users', usersRouter);
 router.use('/movies', moviesRouter);
+router.use('*', (req, res, next) => {
+  next(new NotFoundError('Page not found'));
+});
 
 module.exports = router;

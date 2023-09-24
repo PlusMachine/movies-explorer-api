@@ -36,6 +36,8 @@ const updateUser = (req, res, next) => {
         next(new BadRequestError(err.message));
       } else if (err instanceof mongoose.Error.DocumentNotFoundError) {
         next(new NotFoundError(`User ${req.params.userId} not found`));
+      } else if (err.code === 11000) {
+        next(new ConflictError('Email already exists'));
       } else { next(err); }
     });
 };
